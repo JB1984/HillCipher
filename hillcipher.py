@@ -1,17 +1,8 @@
 import numpy as np
 
-#Set up the alphabet
-alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-
 ### ENCODING ###
 
-#Creata a martrix that we want to use as they key for our encoding, we will use 2X2 smatrix for now
-encodingMatrix = np.array([[5, 5], [3, 8]])
-
-#Now we need to create the message we want to encode, we would get user input, put all lower and remove spaces. Will need to be multiple
-#of two for now to ease of use. Later create way to do any length with padding
-
-def encryptPassage(message):
+def encryptPassage(message, alphabet):
 
     encodedMessage = []
 
@@ -25,6 +16,7 @@ def encryptPassage(message):
 
     print(encodedMessage)
     return encodedMessage
+
 ### DECODING ###
 
 def decryptPassage(message, encodingMatrix):
@@ -79,3 +71,48 @@ def decryptPassage(message, encodingMatrix):
     return decodedMessage
 
 
+
+#Creata a martrix that we want to use as they key for our encoding, we will use 2X2 smatrix for now
+encodingMatrix = np.array([[5, 5], [3, 8]])
+
+#Set up the alphabet
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+while choiceOfRun != "A" or "B" or "Q":
+
+    choiceOfRun = input("Do you want to: A) Encrypt a passage. B) Decrypt a passage. Q) Quit program [A/B/Q]?").upper()
+    
+    if choiceOfRun == "A":
+
+        # Encryption
+        passageInput = input("Enter passage you wish to encrypt: ")
+        passageInput = passageInput.lower().replace(" ", "")
+
+        encryptedPassage = encryptPassage(passageInput, alphabet)
+
+        encryptedPassageString = ''.join(encryptedPassage)
+
+        print("Your encrypted passage is: " + encryptedPassageString)
+
+        choiceOfRun = ''
+
+        continue
+     
+     if choiceOfRun == "B":
+            
+        # Decryption
+        encryptedPassageInput = input("Enter passage you wish to decrypt: ")
+        encryptedPassageInput = encryptedPassageInput.lower().replace(" ", "")
+
+        decryptedPassage = decryptPassage(encryptedPassageInput, encodingMatrix)
+
+        decryptedPassageString = ''.join(decryptedPassage)
+
+        print("Your decrypted passage is: " + decryptedPassageString)
+
+        choiceOfRun = ''
+
+        continue
+
+   if choiceOfRun == "Q":
+        break
