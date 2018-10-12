@@ -57,13 +57,9 @@ def decryptPassage(message, encodingMatrix):
 
     decodedMessage = []
 
-    for (first, second) in zip(encodedMessage[0::2], encodedMessage[1::2]):
-        print(alphabet.index(first))
-        print(alphabet.index(second))
+    for (first, second) in zip(message[0::2], message[1::2]):
         multiplied = np.array(newMatrixMod26).dot(np.array([alphabet.index(first), alphabet.index(second)]))
-        print(multiplied)
         multipliedMod = multiplied%len(alphabet)
-        print(multipliedMod)
         decodedMessage.append(alphabet[multipliedMod[0]])
         decodedMessage.append(alphabet[multipliedMod[1]])
 
@@ -77,6 +73,8 @@ encodingMatrix = np.array([[5, 5], [3, 8]])
 
 #Set up the alphabet
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+choiceOfRun = ''
 
 while choiceOfRun != "A" or "B" or "Q":
 
@@ -98,7 +96,7 @@ while choiceOfRun != "A" or "B" or "Q":
 
         continue
      
-     if choiceOfRun == "B":
+    if choiceOfRun == "B":
             
         # Decryption
         encryptedPassageInput = input("Enter passage you wish to decrypt: ")
@@ -114,5 +112,5 @@ while choiceOfRun != "A" or "B" or "Q":
 
         continue
 
-   if choiceOfRun == "Q":
+    if choiceOfRun == "Q":
         break
