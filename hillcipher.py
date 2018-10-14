@@ -45,7 +45,7 @@ def decryptPassage(message, encodingMatrix, alphabet):
     #determinate2 = encodingMatrix[0][1]*encodingMatrix[1][0]
     #determinateFinal = determinate1-determinate2
 
-    #Find the determinate using Numpy
+    #Find the determinate using Numpy, this is a modification of the above commented out code. Just quicker and easier way.
     determinateFinal = round(np.linalg.det(encodingMatrix))
     print(determinateFinal)
 
@@ -64,6 +64,7 @@ def decryptPassage(message, encodingMatrix, alphabet):
     #    25:25,
     #}
 
+    # This now uses my custom getModuloRecip function. Very big improvement in that it allows for any size alphabet
     recipModuloDict = getModuloRecip(alphabet)
     print(recipModuloDict)
 
