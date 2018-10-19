@@ -76,7 +76,7 @@ def decryptPassage(message, encodingMatrix, alphabet):
                         [-repModuloValue*encodingMatrix[1][0],
                         repModuloValue*encodingMatrix[0][0]]])
 
-    newMatrixMod26 = [[newMatrix[0][0]%len(alphabet),
+    newMatrixMod = [[newMatrix[0][0]%len(alphabet),
                     newMatrix[0][1]%len(alphabet)],
                     [newMatrix[1][0]%len(alphabet),
                     newMatrix[1][1]%len(alphabet)]]
@@ -86,7 +86,7 @@ def decryptPassage(message, encodingMatrix, alphabet):
     decodedMessage = []
 
     for (first, second) in zip(message[0::2], message[1::2]):
-        multiplied = np.array(newMatrixMod26).dot(np.array([alphabet.index(first), alphabet.index(second)]))
+        multiplied = np.array(newMatrixMod).dot(np.array([alphabet.index(first), alphabet.index(second)]))
         multipliedMod = multiplied%len(alphabet)
         decodedMessage.append(alphabet[multipliedMod[0]])
         decodedMessage.append(alphabet[multipliedMod[1]])
