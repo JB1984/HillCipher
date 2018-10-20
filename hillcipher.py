@@ -109,11 +109,21 @@ def decryptPassage(message, encodingMatrix, alphabet):
 
 
 
+#Set up the alphabet
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '.', '?', ' ']
+
 #Creata a martrix that we want to use as they key for our encoding, we will use 2X2 smatrix for now
 encodingMatrix = np.array([[5, 5], [3, 8]])
 
-#Set up the alphabet
-alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '.', '?', ' ']
+### We need to use the find_factors on the len of the alphabet we are using. Our key cannot have a determinate that is any of the factor
+### so in the case of standard alphabet this is 2 or 13
+
+factorsNotAllowed = find_factors(len(alphabet)+1)
+
+determinateEncodingMatrix = round(np.linalg.det(encodingMatrix))
+
+if determinateEncodingMatrix in factorsNotAllowed[1:-1]:
+    print("Encoding Matrix not allowed, please choose another")
 
 choiceOfRun = ''
 
