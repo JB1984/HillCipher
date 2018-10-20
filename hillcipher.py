@@ -18,6 +18,19 @@ def encryptPassage(message, alphabet):
     return encodedMessage
 
 
+### FIND FACTORS ###
+
+def find_factors(x):
+   # This function takes a number and find its factors and returns them in array
+   
+    factors = []
+    
+    for i in range(1, x + 1):
+       if x % i == 0:
+           factors.append(i)
+    
+    return factors
+
 ### Get modulo reciprocals ###
 
 def getModuloRecip(alphabet):
