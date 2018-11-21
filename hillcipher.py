@@ -113,7 +113,28 @@ def decryptPassage(message, encodingMatrix, alphabet):
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '.', '?', ' ']
 
 #Creata a martrix that we want to use as they key for our encoding, we will use 2X2 smatrix for now
-encodingMatrix = np.array([[5, 5], [3, 8]])
+
+###Old encoding matrix setup 
+#encodingMatrix = np.array([[5, 5], [3, 8]])
+
+###New encoding matric setup
+
+#First have the user enter the word they want to use as the key. This will determine the matrix size. Fill any empty parts of the
+#Matrix with zeros. This would occur if there is an odd number of letters in the word chosen.
+
+encodingMatrixWord = input("Enter the word you would like to use to encode the passage").lower()
+
+#Get the length of the word divided by two and rounded UP only so for cases where the word is odd number we always then add 0 when
+#creating matrix
+encodingMatrixSize = math.ceil(len(encodingMatrixWord)/2)
+
+#Initialize the new np array with correct shape and filled with 0's for value
+encodingMatrixEmpty = np.full((encodingMatrixSize,encodingMatrixSize), 0)
+
+#We now need to iterate through the encodingMatrixWord and find the coresponding alphabet index values and put them into the 
+#encodingMatrix in place of the 0's. I do not think order really matters as long as we use the same order on decoding.
+
+
 
 ### We need to use the find_factors on the len of the alphabet we are using. Our key cannot have a determinate that is any of the factor
 ### so in the case of standard alphabet this is 2 or 13
