@@ -1,4 +1,5 @@
 import numpy as np
+import math
 
 ### ENCODING ###
 
@@ -133,8 +134,14 @@ encodingMatrixEmpty = np.full((encodingMatrixSize,encodingMatrixSize), 0)
 
 #We now need to iterate through the encodingMatrixWord and find the coresponding alphabet index values and put them into the 
 #encodingMatrix in place of the 0's. I do not think order really matters as long as we use the same order on decoding.
+encMatrixWordIndexed = []
+for letter in encodingMatrixWord:
+    encMatrixWordIndexed.append(alphabet.index(letter))
 
+np.copyto(encodingMatrixEmpty, encMatrixWordIndexed)
 
+#Now that we have filled the encoding matrix, rename it back to what we use in the rest of the program
+encodingMatrix = encodingMatrixEmpty
 
 ### We need to use the find_factors on the len of the alphabet we are using. Our key cannot have a determinate that is any of the factor
 ### so in the case of standard alphabet this is 2 or 13
