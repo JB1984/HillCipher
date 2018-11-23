@@ -118,7 +118,7 @@ alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n'
 ###Old encoding matrix setup 
 #encodingMatrix = np.array([[5, 5], [3, 8]])
 
-###New encoding matric setup
+###New encoding matrix setup, this should work currently with ENCODING ONLY. Decoding we need to figure a new way to create inverse matrix
 
 #First have the user enter the word they want to use as the key. This will determine the matrix size. Fill any empty parts of the
 #Matrix with zeros. This would occur if there is an odd number of letters in the word chosen.
